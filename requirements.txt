@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+motor
+pymongo[srv]
+certifi
+python-dotenv
+pydantic
+scikit-learn
+joblib
+pandas
+numpy

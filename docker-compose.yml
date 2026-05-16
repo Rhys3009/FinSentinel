@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: finsentinel-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  api:
+    build: .
+    container_name: finsentinel-api
+    ports:
+      - "8000:8000"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017
+      - DB_NAME=finsentinel
+    volumes:
+      - ./:/app
+    depends_on:
+      - mongo
+volumes:
+  mongo-data:
